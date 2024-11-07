@@ -1,0 +1,41 @@
+/* 
+Color Colors
+#AD54DE
+*/
+
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+    box-sizing: border-box;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+  
+  body{
+     background-color:#E04088;
+     font-family: "Rubik", sans-serif;
+   }
+  
+  main{
+    background-color:#ffffff;
+    width:80vw;
+    /* long form */
+    margin-top:40px;
+    margin-right:auto;
+    margin-bottom:40px;
+    margin-left:auto;
+    /* Top / Right / Bottom / Left */
+    margin: 40px auto 40px auto;
+    /* TOP/Bottom | LEFT/RIGTH */
+    margin: 40px auto;
+    border:2px solid #0ABFBF;
+    border-radius:4px;
+  }
+  
+  header.primary {
+    background-color:#8054DE;
+    padding:20px;
+    background-image: url("https://assets.codepen.io/7248/bg_1.png");
+    background-repeat:no-repeat;
+    background-size:cover;
+}
