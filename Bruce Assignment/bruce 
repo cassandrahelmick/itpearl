@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>New Patient Registration</h1>
+
+<h4>Please fill out this form below</h4>
+
+<form action="/https://brucebauer.info/assets/ITEC3650/datadump.php">
+<label for="fname">First name:</label><br>
+<input type="text" id="fname" name="fname" size=30, maxlength=30 ><br> 	 
+<label for=:mname">Middle Initial:</label><br>
+<input type="text" id="minitial" name="minitial"size=1, maxlength=1"><br>
+<label for="lname">Last name:</label><br>
+<input type="text" id="lname" name="name"size=30, maxlength=30"><br><br>
+</form> 
+</body>
+</html>
+
