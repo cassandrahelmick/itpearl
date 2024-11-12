@@ -13,6 +13,14 @@
 <input type="text" id="minitial" name="minitial"size=1, maxlength=1"><br>
 <label for="lname">Last name:</label><br>
 <input type="text" id="lname" name="name"size=30, maxlength=30"><br><br>
+
+
+
+
+
+
+
+
 </form> 
 </body>
 </html>
