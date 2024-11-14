@@ -11,6 +11,9 @@ html {
   box-sizing: inherit;
 }
 
+img{
+  max-width:100%;
+}
 
 /*---------------------Utility Classes-----------------------------*/
 .container{
@@ -92,6 +95,7 @@ header.primary nav ul li a{
   padding:10px 10px 10px 0;
   text-align:right;
   transition:.5s;
+  font-size:.9rem;
   text-decoration:none;
 }
 
@@ -109,4 +113,59 @@ header.primary nav a:hover{
   border-left: 7.5px solid #530CF5;
   padding:7.5px;
   border-radius:15px 0;
+}
+
+#blog{
+  background-color:#104d73;
+  padding:20px 0;
+  border-top:6x double #E04088;
+  border-bottom:6px double #Eo4o88;
+}
+#blog > h2{
+  color:#ffffff;
+  text-shadow: 2px 2px #000;
+  font size:2 2rem;
+  margin-left:20px;
+}
+
+#blog article.post{
+  background color: #ffffff;
+  margin:21px;padding:21px;
+  display:grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows:auto;
+  grid-template-areas:
+    "figure header header"
+    "figure post-content post-content"
+    "footer footer footer"
+}
+
+#blog articlegifure{
+  grid-area:figure;
+  margin:0 20px 0 0;
+}
+#blog article header{
+  grid-area:header
+}
+#blog article .post-content{
+  grid-area:post-content;
+}
+#blog article .post meta{
+  grid-area:footer;
+}
+
+aside .container{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:40px;
+}
+
+#colophon{
+  text-align:center;
+  background-image: url("https://assets.codepen.io/7248/bg_1.png");
+  background-repeat:no-repeat;
+  background-size:cover;
+  color:#fff;
+  padding:20px;
+  
 }
