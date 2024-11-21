@@ -18,44 +18,81 @@
 
 <form id="NewPatientRegistration" action="https://brucebauer.info/assets/ITEC3650/datadump.php">
 <label class="formlabel" for="fname">First name:</label>
-<input type="text" id="fname" name="fname", size="30", maxlength="30" data-rule-required="true"  data-msg-required="First Name is Required"><label for="fname" class="error"></label><br>	 
+<input type="text" id="fname" name="fname" size="30" maxlength="30" data-rule-required="true"  data-msg-required="First Name is Required"><label for="fname" class="error"></label><br>	 
+  
 <label class="formlabel" for="mname">Middle Initial:</label>
-<input type="text" id="minitial" name="minitial" size="1", maxlength="1"><br>
+<input type="text" id="minitial" name="minitial" size="1" maxlength="1" data-rule-required="true" data-msg-required="Middle Name is Required">
+  <label for="minitial" class="error"></label><br>	
+  
 <label class="formlabel" for="lname">Last name:</label>
-<input type="text" id="lname" name="name"size="30", maxlength="30"><br>
+<input type="text" id="lname" name="name" size="30" maxlength="30" data-rule-required="true"  data-msg-required="Last Name is Required"><label for="Lname" class="error"></label><br>
+  
 <label  class="formlabel" for="email">Email:</label>
-<input type="text" id="email" name="email" size="30", maxlength="30">
-<input type="sex" id="sex" name="sex"><br>
+<input type="text" id="email" name="email" size="30" maxlength="30" 
+       data-rule-required="true"  data-msg-required="email is Required" 
+       data-rule-email="true"  data-msg-email="email is invalid">
+  <label for="email" class="error"></label></br>
+  
+  
+
 <label  class="formlabel">Sex:</label>
-<label for="M"><input type="radio" name="m" id="male"
+<label for="M"><input type="radio" name="m" id="male" 
 value="Male">Male</label>
 <label for="f"><input type="radio" name="f" id="female"
 value="Female">Female</label>
-<label for="N"><input type="radio" name="N" id="N/A"
-                      value="N/A">N/A</label></br>
+    <label for="NA"><input type="radio" name="NA" value="na">NA</label>
+            <data-rule-required="true" data-msg-required="Sex is Required" <label for="sex" class="error"
+ </label></br>
+    
+    
 <label  class="formlabel" for="birthday">Birthday:</label>
-<input type="Birthday" id="birthday" name="birthday", size="8",maxlength="8"><br>
+<input type="Birthday" id="birthday" name="birthday", size="8",maxlength="8"
+       data-rule-required="true"  data-msg-required="Birthday is Required"><label for="birthday" class="error"></label><br>	 
+  
 <label  class="formlabel" for="H(inches)">Height(inches):</label>
-<input for="text" id="H(inches)" name="Height",size="3",maxlength="3"><br>
+<input for="text" id="H(inches)" name="Height",size="3",maxlength="3"
+       data-rule-required="true"  data-msg-required="Height is Required"
+data-rule-min="12" data-msg-min="Number minimum of 12"
+       data-rule-max="120" data-msg-max="Number maximum of 120">
+  <label for="height" class="error"></label><br>	 
+  
 <label  class="formlabel" for="W(pounds)">Weight(pounds):</label>
-<input for="text" id="W(pounds)" name="Weight",size="3",maxlength="3"><br>
+<input for="text" id="W(pounds)" name="Weight",size="3",maxlength="3"
+  data-rule-required="true"  data-msg-required="Weight is Required"
+data-rule-min="10" data-msg-min="Number minimum of 10"
+       data-rule-max="500" data-msg-max="Number maximum of 500">
+  <label for="weight" class="error"></label><br>	 
+  
 <hr />
   <label  class="formlabel" for="pnumber">Phone Number:</label>
-<input for="text" id="PNumber" name="Phone Number",size="14", maxlength="14"><br>
-   <label  class="formlabel">Marital Status:</label>
-   <select name="Marital Status" id="mstatus">
+<input for="text" id="PNumber" name="Phone Number",size="14", maxlength="14"
+       data-rule-required="true" data-rule-phoneUS="true" Validate for valid US phone number data-msg-required="Phone Number is Required">
+  <label for="phone number" class="error"></label><br>
+ 
+  <label for="MaritalStatus" class="formlabel">Marital Status:</label>
+   <select name="Marital Status" id="mstatus"
+           data-rule-required="true" data-msg-required="Marital Status is Required">
     <option value="">Select a status...</option>
     <option value="Single">S(Single)</option>
-    <option value="Female">F(Femlae)</option>
+    <option value="Female">M(Married)</option>
     <option value="Divorced">D(Divorced)</option>
     <option value="Legally Separated">L(Legally Seperated)</option>
-     <option value="Widowed">W(Widowed)</option> 
-    </select></br>
+     <option value="Widowed">W(Widowed)</option>
+
+     <label for="Mstatus" class="error"></label>
+  </select>
+</br>
 <label class="formlabel" for="address">Address:</label>
-<input for="text" id="Address" name="Address",size="30", maxlength="30"><br>
+<input for="text" id="Address" name="Address",size="30", maxlength="30"
+       data-rule-required="true" data-msg-required="Address is Required">
+<label for="address" class="error"></label><br>	
 <label  class="formlabel" for="city">City/State/Zip:</label>
-<input for="text" id="city" name="City",size="30",maxlength="30"> ,
-  <select name="State" id"state">
+<input for="text" id="city" name="City",size="30",maxlength="30"
+        data-rule-required="true" data-msg-required="City is Required">
+<label for="city" class="error"></label>	,
+  <select name="State" id"state"
+           data-rule-required="true" data-msg-required="State is Required">
+<label for="state" class="error"></label><br>	
   <option value=>Select a State...</option>
   <option value="AL">Alabama</option>
 	<option value="AK">Alaska</option>
@@ -107,19 +144,25 @@ value="Female">Female</label>
 	<option value="WA">Washington</option>
 	<option value="WV">West Virginia</option>
 	<option value="WI">Wisconsin</option>
-	<option value="WY">Wyoming</option>
+	<option value="WY">Wyoming</option> 
+
   
       <label for="Zip">&nbsp;&nbsp;</label>
-      <input for="text" id="Zip" name="Zip", size="3">
+      <input for="text" id="Zip" name="Zip", size="3"
+              data-rule-required="true" data-msg-required="Zip is Required">
+<label for="zip" class="error"></label><br>	
 <hr
 <input type="TMedications" id="tmedications" name="Medications"><br>
 <label class="formlabel">Taking Medications:</label>
 <label for="Y"><input type="radio" name="Yes" id="Yes"
 value="Yes">Yes</label>
-<label for="N"><input type="radio" name="No" id="No"
-                      value="no">No</label></br>
+<label for="N"><input type="radio" name="No" id="No"   data-rule-required="true" data-msg-required="Taking Medications is Required" 
+                      value="no">No
+  <label for="taking medications" class="error"</label></br>
+    
+    
   <label  class="formlabel" for="medications">If yes, list medications here:</label>
-<input for="text" id="medications" name="MedicationsList",row="3",cols="30"><br>
+  <textarea name="medications" class="formlabel" row="3" cols="30"></textarea><br>
   <input type="submit" value="SubmitExample" Name="SubmitButton">
   </form>
 <script>
