@@ -6,7 +6,7 @@
     <meta name="keywords" content="JavaScript, HTML, CSS">
     <meta name="author" content="Bruce Bauer">
     <title>JavaScript Calculator</title>
-    <link rel="stylesheet" type="text/css" href="assets/style/minmaxavg.css">
+    <link rel="stylesheet" type="text/css" href="assets/style/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/additional-methods.min.js"></script>
@@ -14,7 +14,7 @@
 <body>
 <form id="myform">
     <div class="formcontainer" onsubmit="return false">
-        <h1>Minimum, Maximum, and Average</h1>
+        <h1>JavaScript Calculator</h1>
         <fieldset id="detail">
             <legend>Min Max Avg</legend>  
             <br>
@@ -26,6 +26,23 @@
             <label class="error" for="Operand1" id="Operand1Error"></label>
             <br><br>
       
+            <label class="formlabel">Operator: </label>
+                <label for="MinOperator">
+                    <input type="radio" name="Operator" id="AddOperator" value="Add"
+                           data-rule-required="true" data-msg-required="Operator is Required" />+
+                </label>
+                <label for="SubOperator">
+                    <input type="radio" name="Operator" id="SubOperator" value="Sub">-
+                </label>
+                <label for="MulOperator">
+                    <input type="radio" name="Operator" id="MulOperator" value="Mul">*
+                </label>
+                <label for="DivOperator">
+                    <input type="radio" name="Operator" id="DivOperator" value="Div">/
+                </label>
+            <label for="Operator" class="error" id="OperatorError"></label>
+            <br><br>
+
             <label class="formlabel" for="Operand2">Operand 2: </label>
             <input type="text" id="Operand2" name="Operand2" size="15" maxlength="15"       
                    data-rule-required="true"  data-msg-required="Operand 2 is Required" 
@@ -33,26 +50,6 @@
             <label class="error" for="Operand2" id="Operand2Error"></label>
             <br><br>
 
-            <label class="formlabel" for="Operand3">Operand 3: </label>
-            <input type="text" id="Operand3" name="Operand3" size="15" maxlength="15"       
-                   data-rule-required="true"  data-msg-required="Operand 3 is Required" 
-                   data-rule-number="true" data-msg-number="Operand 3 must be a Number">
-            <label class="error" for="Operand3" id="Operand3Error"></label>
-            <br><br>
-
-            <label class="formlabel">Operator: </label>
-                <label for="MinOperator">
-                    <input type="radio" name="Operator" id="MinOperator" value="Min"
-                           data-rule-required="true" data-msg-required="Operator is Required" />Min
-                </label>
-                <label for="MaxOperator">
-                    <input type="radio" name="Operator" id="MaxOperator" value="Max">Max
-                </label>
-                <label for="AvgOperator">
-                    <input type="radio" name="Operator" id="AvgOperator" value="Avg">Avg
-                </label>
-            <label for="Operator" class="error" id="OperatorError"></label>
-            <br><br>
 
             <label class="formlabel">Result: </label>
             <span id="Result"></span>
@@ -64,6 +61,6 @@
         </fieldset>
     </div>
 </form>
-<script src="assets/scripts/minmaxavg.js"></script>
+<script src="assets/js/calculator.js"></script>
 </body>
 </html>
