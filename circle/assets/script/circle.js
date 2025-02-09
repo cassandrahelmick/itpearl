@@ -33,9 +33,16 @@ $( "CircleForm" ).validate( {
 
  function calculateCircumference(r) {
 
-    return 2 * Math.PI * r
+    return 2 * Math.PI * r;
  }
 
  function calculateArea(r) {
-  return Math.PI * r * r 
+  return Math.PI * r * r;
+ }
+ function ClearForm() {
+   document.getElementById("CircleForm").reset();
+   document.getElementById("diamter").innerHTML = "";
+   document.getElementById("circumference").innerHTML = "";
+   document.getElementById("area").innerHTML = "";
+
  }
