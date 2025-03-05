@@ -1,4 +1,4 @@
-("#myform").validate({
+$("#myform").validate({
     
 });
 
