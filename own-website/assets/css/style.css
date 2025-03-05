@@ -76,7 +76,7 @@ header.primary nav ul, nav ul{
 #content h2, #content h3, articl.widget h2{
   text-align: center;
   color:#e8615d;
-  border-left: 7.5px solid #530CF5;
+  border-left: 7.5px ;
   padding: 7.5px;
   border-radius:15px 0;
 }
