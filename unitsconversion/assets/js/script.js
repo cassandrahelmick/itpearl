@@ -13,10 +13,10 @@ function calculate(){
         let Fromunit = "";
 
     
-        if (document.getElementById("fromcentimenters").checked){
+        if (document.getElementById("fromcentimeters").checked){
             Fromunit = "cm";
         }
-            else if (document.getElementById("frommmeters").checked){
+            else if (document.getElementById("frommeters").checked){
                 Fromunit = "m";
         }
         
@@ -40,7 +40,7 @@ function calculate(){
         
         let Tounit="";
 
-        if (document.getElementById("tocentimenters").checked){
+        if (document.getElementById("tocentimeters").checked){
             Tounit = "cm";
         }
             else if (document.getElementById("tometers").checked){
@@ -77,7 +77,7 @@ function calculate(){
             let response = await fetch (bruceUrl);
             let result = await response.json();
 
-            document.getElementById("tovalue").innerHTML=result;
+            document.getElementById("Result").innerHTML=result;
 
         }
 
