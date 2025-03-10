@@ -28,41 +28,44 @@ body{
     position: relative;
     width: 100%;
     height: 50vh;
-    background-image: url("https://media.istockphoto.com/id/506800112/photo/hope.jpg?s=612x612&w=0&k=20&c=VlWUKzUlRKrSjJY6zRkukRKBv2nrwNpjmavHW18UhJI=");
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-vSSiBPxihYmPTDh3Tb0ya8g-s2F7bJQ1WQ&s");
+    background-position: center; 
     background-size: cover;
-    background-position: center;
     background-repeat: no-repeat;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: left;
+    text-align: center;
 }
-
+header.primary h1 a {
+    color: crimson;
+    font-size: 2em;
+    
+    text-decoration: none;
+}
 
 header.primary a {
-    color: pink;
-    font-size: 20px;
+    color: crimson;
+    font-size: 24px;
    margin:10px;
-    text-shadow: 2px 2px px (0, 0, 0, 0.5);
-}
+    text-shadow: 1px 1px 1px (0, 0, 0, 0.5);
 
+}
 
 header.primary{
     position: relative;
     justify-content: space-between;
+  
+ 
 }
 
 header.primary nav{
-    position: absolute;
-    width: 100%;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: flex-end;
-    background-color: (0, 0, 0, 0.5); 
-    padding: 15px 0;
-  margin:10px;
-    
+   display: flex;
+    justify-content: center;
+    background-color: rgba(219, 133, 133, 0.5); 
+    padding: 1px 0;
+
 
 }
 header.primary nav ul, nav ul{
@@ -73,7 +76,7 @@ header.primary nav ul, nav ul{
     gap:15px;
 }
 
-#content h2, #content h3, articl.widget h2{
+#content h2, #content h3, article.widget h2{
   text-align: center;
   color:#e8615d;
   border-left: 7.5px ;
@@ -82,7 +85,10 @@ header.primary nav ul, nav ul{
 }
     
 
-
+#resources{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+}
 
 
 aside .container{
