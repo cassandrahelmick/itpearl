@@ -10,6 +10,8 @@ html {
 
 img{
     max-width: 100%;
+    
+
 }
 * {
     margin: 0;
@@ -24,11 +26,17 @@ body{
     
 }
 
+.card img{
+    height: 240px;
+    width: 200px;
+    object-fit: cover; 
+}
+
 .hgroup{
     position: relative;
     width: 100%;
     height: 50vh;
-    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-vSSiBPxihYmPTDh3Tb0ya8g-s2F7bJQ1WQ&s");
+    background-image: url("../img/imgflower.jpg");
     background-position: center; 
     background-size: cover;
     background-repeat: no-repeat;
@@ -37,7 +45,10 @@ body{
     align-items: center;
     justify-content: center;
     text-align: center;
+    
+    
 }
+
 header.primary h1 a {
     color: crimson;
     font-size: 2em;
