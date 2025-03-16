@@ -76,23 +76,24 @@ header.primary nav{
     justify-content: center;
     background-color: rgba(219, 133, 133, 0.5); 
     padding: 1px 0;
-
-
 }
 header.primary nav ul, nav ul{
     list-style-type: none;
-    margin:10px;
+    margin:20px;
     padding:0;
     display: flex;
-    gap:15px;
+    gap: 15px;
 }
 
-#content h2, #content h3, article.widget h2{
-  text-align: center;
+#content h2 , #content h3, article.widget h2{
+    text-align: center;
   color:#e8615d;
   border-left: 7.5px ;
   padding: 7.5px;
   border-radius:15px 0;
+    font-size: 26px;
+    width:100%;
+    
 }
     
 
