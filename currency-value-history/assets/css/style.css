@@ -10,3 +10,7 @@
     color: red;
     padding-left: 5px;
 }
+canvas {
+    max-width: 600px;
+    max-height: 400px;
+}
