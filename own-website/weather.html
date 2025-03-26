@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Victim Services Website</title>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Keyword rich narrative on site purpose" />
+  <meta name="author" content="Cassandra Helmick" />
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> <!-- Add your own Font -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+   <main>
+     <header  class="primary">
+            <div class="hgroup">
+                    <h1><a href="index.html">Little Rock Victim Services</a></h1>
+              </div>
+              <nav>
+                <ul>
+                  <li class="dropdown">
+                    <a href="home.html">Home</a>
+                  </li>
+                  <li><a href="gethelp.html">Get Help</a></li>                 
+                  <li><a href="identifyabuse.html">Identify Abuse</a></li>
+                  <li><a href="resources.html"> Resources</a></li>
+                  <li><a href="contactus.html">Contact Us</a></li>
+                  <li><a href="weather.html">Weather</a>
+                </ul>
+              </nav>
+        </header>
+      </main>
+      
+        <section id="content" class="welcome">
+          <form id="myform">
+            <div class="formcontanier">
+                <h1>Little Rock Weather</h1>
+                <label class="formlabel" for="location"> Enter Location: </label>
+                <input type="text" id="location" name="Location" size="30" maxlength="30" value="LittleRock" data-rule-required="true" data-msg-required="Location is Required"><br>
+                <button id="displayweather">Display Weather</button>
+                <input type="button" value="Clear" id="Clear" name="Clear" onclick="clearForm();">
+
+            </div>
+          </form>
+
+          <div id="weatherloc"></div>
+          <div id="forecastlocation"></div>
+          <canvas id="weather" width="600" height="400"></canvas>
+          
+        </section>
+      
+
+    </main>
+    </footer>
+
+</body>
