@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,54 +11,57 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/additional-methods.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+ 
+ 
     <script src="assets/scripts/currency.js"></script>
+ 
 </head>
     <body>
-        <main>
+         <main>
         <form id="myform" onsubmit="return false;">
             <div class="formcontainer">
                 <h1>Currency Value History</h1>
                 <label for="basecurrency" class="formlabel">Base Currency: </label>
-                <select id="basecurrency" name="basecurrency" data-rule-required="true" data-msg-required="Base Currency is Required">
-                    <option value="">Select An Option</option>
-                    <option value="KRW">Korean Won</option>
-                    <option value="JOD">Jordanian Dinar</option>
-                    <option value="JPY">Japanese Yen</option>
-                    <option value="MAD">Moroccan Dirham</option>
-                    <option value="SGD">Singapore Dollar</option>
+                <select id="basecurrency" name="basecurrency" class="select" data-rule-required="true" data-msg-required="Base Currency is Required">
+                    <option value="">Select a Currency...</option>
                     <option value="USD">United States Dollar</option>
-                    <option value="QAR">Qatari Rial</option>
+                    <option value="MXN">Mexican Pesos</option>
+                    <option value="GBP">Great Britain Pound</option>
+                    <option value="CNY">Chinese Yuan</option>
+                    <option value="AUD">Australian Dollar</option>
+                  
                 </select>
+                <label for="basecurrency" class="error" id="basecurrencyMsg"></label>
                 <br>
                  <label for="convertcurrency" class="formlabel"> Convert Currency: </label>
-                 <select id="convertcurrency" name="convertcurrency"  data-rule-required="true" data-msg-required="Convert Currency is Required">
-                        <option value="">Select An Option</option>
-                        <option value="KRW">Korean Won</option>
-                        <option value="JOD">Jordanian Dinar</option>
-                        <option value="JPY">Japanese Yen</option>
-                        <option value="MAD">Moroccan Dirham</option>
-                        <option value="SGD">Singapore Dollar</option>
-                        <option value="USD">United States Dollar</option>
-                        <option value="QAR">Qatari Rial</option>
+                 <select id="convertcurrency" name="convertcurrency" class="select" data-rule-required="true" data-msg-required="Convert Currency is Required">
+                    <option value="">Select A Currency</option>
+                    <option value="USD">United States Dollar</option>
+                    <option value="MXN">Mexican Pesos</option>
+                    <option value="GBP">Great Britain Pound</option>
+                    <option value="CNY">Chinese Yuan</option>
+                    <option value="AUD">Australian Dollar</option>
                 </select>
+                <label for="convertcurrency" class="error" id="convertcurrencyMsg"></label>
                 <br>
             <label for="fromdate" class="formlabel">From Date:</label>
             <input type="date" id="fromdate" name="fromdate" required>
+            <label for="fromdate" class="error" id="fromdateMsg"></label>
             <br>
             <label for="todate" class="formlabel">To Date: </label>
             <input type="date" id="todate" name="todate" required>
+            <label for="todate" class="error" id="todateMsg"></label>
             <br><br>
 
-            <input type="button" value="Results" id="display">
+            <input type="button" value="Show Results" id="display">
             <input type="button" value="Clear" id="clear" name="clear" onclick="ClearForm();">
             <hr>
          </div>
      </form>
         <div id="chart-container">
             <canvas id="chartjs-0"></canvas>
-            <script src="assets/scripts/chart.js"></script>
         </div>
+           
         
     </main>
     </body>
