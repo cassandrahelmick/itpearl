@@ -1,50 +1,17 @@
-document.addEventListener("DOMContentLoaded", function () {
-  let slideIndex = 0;
-  let slides = document.getElementsByClassName("slide");
+document.addEventListener("DOMContentLoaded", () => {
+  const locationInput = document.getElementById("location");
+  const searchButton = document.getElementById("search");
+  const errorMessage = document.getElementById("error-message");
+  const tableBody = document.getElementById("forecast-table-body");
+  const ctx = document.getElementById("forecast-chart").getContext("2d");
 
-  function showSlides() {
-    for (let i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-    
-    slideIndex++;
-    if (slideIndex >= slides.length) {
-      slideIndex = 0;
-    }
-    
-    slides[slideIndex].style.display = "block";
-  }
+  let forecastChart; 
 
-  showSlides();
-  setInterval(showSlides, 5000);
+  
+  const defaultLocation = "Little Rock";
 });
 
-function toggleMenu() {
-  document.querySelector(".nav-links").classList.toggle("active");
-}
 
-
-$(document).ready(function () {
-  $('.slider').slick({
-    centerMode: true,
-    centerPadding: '60px',
-    slidesToShow: 3,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    arrows: false,
-    dots: true,
-    infinite: true,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          centerMode: false,
-          slidesToShow: 1
-        }
-      }
-    ]
-  });
-});
 
 $(document).ready(function () {
   $("#displayweather").click(getWeatherForecast);
@@ -148,6 +115,6 @@ function clearForm() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("location").value = "Virginia"; 
+  document.getElementById("location").value = "Little Rock"; 
   getWeatherForecast(); 
 });
