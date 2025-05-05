@@ -1,120 +1,163 @@
 document.addEventListener("DOMContentLoaded", () => {
   const locationInput = document.getElementById("location");
-  const searchButton = document.getElementById("search");
+  const searchButton = document.getElementById("display");
+  const clearButton = document.getElementById("clear"); // <-- Clear button
   const errorMessage = document.getElementById("error-message");
   const tableBody = document.getElementById("forecast-table-body");
   const ctx = document.getElementById("forecast-chart").getContext("2d");
 
-  let forecastChart; 
+  let forecastChart;
 
-  
   const defaultLocation = "Little Rock";
-});
 
+  function showError(message) {
+    errorMessage.textContent = message;
+    errorMessage.style.display = "block";
+  }
 
+  function clearError() {
+    errorMessage.textContent = "";
+    errorMessage.style.display = "none";
+  }
 
-$(document).ready(function () {
-  $("#displayweather").click(getWeatherForecast);
-});
+  async function getGeolocation(query) {
+    try {
+      let response = await fetch(
+        `https://geocoding-api.open-meteo.com/v1/search?name=${query}&count=10&language=en&format=json`
+      );
+      if (!response.ok) throw new Error("Geolocation API request failed.");
 
-async function getWeatherForecast() {
-  "use strict";
+      let data = await response.json();
+      if (!data.results || data.results.length === 0) {
+        throw new Error("No location found. Try another.");
+      }
+      return data.results[0];
+    } catch (error) {
+      showError(error.message);
+      return null;
+    }
+  }
 
-  let form = $("#myform");
+  async function getWeatherForecast(lat, lon) {
+    try {
+      let response = await fetch(
+        `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max&temperature_unit=fahrenheit&timezone=auto`
+      );
+      if (!response.ok) throw new Error("Weather API request failed.");
 
-  if (form.valid()) {
-    let locationInput = document.getElementById("location").value;
-    if (!locationInput) {
-      alert("Please enter a location");
+      let data = await response.json();
+      if (!data.daily || !data.daily.time)
+        throw new Error("No weather data available.");
+
+      return data.daily;
+    } catch (error) {
+      showError(error.message);
+      return null;
+    }
+  }
+
+  function displayResults(locationData, forecastData) {
+    clearError();
+
+    document.getElementById("location-name").textContent = locationData.name;
+    document.getElementById("admin-location").textContent =
+      locationData.admin1 || "N/A";
+    document.getElementById("country").textContent = locationData.country;
+    document.getElementById("latitude").textContent =
+      locationData.latitude.toFixed(2);
+    document.getElementById("longitude").textContent =
+      locationData.longitude.toFixed(2);
+
+    tableBody.innerHTML = "";
+    let labels = [];
+    let temperatures = [];
+
+    for (let i = 0; i < forecastData.time.length; i++) {
+      let formattedDate = new Date(forecastData.time[i]).toLocaleDateString();
+      let temp = forecastData.temperature_2m_max[i];
+
+      labels.push(formattedDate);
+      temperatures.push(temp);
+
+      let row = `<tr>
+              <td>${formattedDate}</td>
+              <td>${temp}°F</td>
+          </tr>`;
+      tableBody.innerHTML += row;
+    }
+
+    displayChart(labels, temperatures);
+  }
+
+  function displayChart(labels, temperatures) {
+    if (forecastChart) {
+      forecastChart.destroy();
+    }
+
+    forecastChart = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: "Max Temperature (°F)",
+            data: temperatures,
+            borderColor: "blue",
+            backgroundColor: "rgba(255, 0, 106, 0.2)",
+            fill: true,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: { beginAtZero: false },
+        },
+      },
+    });
+  }
+
+  async function handleSearch() {
+    clearError();
+
+    let query = locationInput.value.trim();
+    if (!query) {
+      showError("Please enter a location.");
       return;
     }
 
-    let geocodeURL = `https://geocoding-api.open-meteo.com/v1/search?name=${locationInput}&count=10&format=json`;
+    let locationData = await getGeolocation(query);
+    if (!locationData) return;
 
-    let geocodeResponse = await fetch(geocodeURL);
-    if (geocodeResponse.status >= 200 && geocodeResponse.status <= 299) {
-      let geocodeData = await geocodeResponse.json();
-      if (!geocodeData.results || geocodeData.results.length === 0) {
-        alert("No location found.");
-        return;
-      }
-      let locationData = geocodeData.results[0];
+    let forecastData = await getWeatherForecast(
+      locationData.latitude,
+      locationData.longitude
+    );
+    if (!forecastData) return;
 
-      let weatherURL = `https://api.open-meteo.com/v1/forecast?latitude=${locationData.latitude}&longitude=${locationData.longitude}&hourly=temperature_2m&temperature_unit=fahrenheit`;
-      let weatherResponse = await fetch(weatherURL);
-      if (weatherResponse.status >= 200 && weatherResponse.status <= 299) {
-        let weatherData = await weatherResponse.json();
-        let weatherHourly = weatherData.hourly;
+    displayResults(locationData, forecastData);
+  }
 
-        document.getElementById(
-          "weatherloc"
-        ).innerHTML = `<h3>${locationData.name}, ${locationData.admin1}, ${locationData.country}</h3>
-     <p><strong>Latitude =</strong> ${locationData.latitude} - <strong>Longitude =</strong> ${locationData.longitude}</p>`;
+  // Clear button functionality
+  clearButton.addEventListener("click", () => {
+    locationInput.value = "";
+    tableBody.innerHTML = "";
+    clearError();
+    document.getElementById("location-name").textContent = "";
+    document.getElementById("admin-location").textContent = "";
+    document.getElementById("country").textContent = "";
+    document.getElementById("latitude").textContent = "";
+    document.getElementById("longitude").textContent = "";
 
-        let forecastTable =
-          "<table>" + "<caption><strong>Temperature</strong></caption>" + "<tr><th>Date</th><th>Temp</th></tr>";
-        let labels = [];
-        let temperatures = [];
-
-        for (let i = 0; i < weatherHourly.time.length; i++) {
-          let unixTime = Date.parse(weatherHourly.time[i]);
-          let formattedTime = new Date(unixTime).toLocaleString();
-          forecastTable += `<tr><td>${formattedTime}</td><td>${weatherHourly.temperature_2m[i]}</td></tr>`;
-          labels.push(formattedTime);
-          temperatures.push(weatherHourly.temperature_2m[i]);
-        }
-        forecastTable += "</table>";
-        document.getElementById("forecastlocation").innerHTML = forecastTable;
-
-        if (window.myChart) {
-          window.myChart.destroy();
-        }
-
-        let ctx = document.getElementById("weather").getContext("2d");
-        window.myChart = new Chart(ctx, {
-          type: "line",
-          data: {
-            labels: labels,
-            datasets: [
-              {
-                label: "Temperature (°F)",
-                data: temperatures,
-                borderColor: "#b5d9a0",
-                fill: false
-              }
-            ]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-              x: { title: { display: true, text: "" } },
-              y: { title: { display: true, text: "" } }
-            }
-          }
-        });
-      } else {
-        alert("Failed to fetch weather data.");
-      }
-    } else {
-      alert("Failed to fetch location data.");
+    if (forecastChart) {
+      forecastChart.destroy();
+      forecastChart = null;
     }
-  }
-}
+    locationInput.focus(); // Optional: refocus input
+  });
 
+  searchButton.addEventListener("click", handleSearch);
 
-function clearForm() {
-  "use strict";
-  document.getElementById("location").value = "";
-  document.getElementById("weatherloc").innerHTML = "";
-  document.getElementById("forecastlocation").innerHTML = "";
-
-  if (window.myChart) {
-    window.myChart.destroy();
-  }
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("location").value = "Little Rock"; 
-  getWeatherForecast(); 
+  locationInput.value = defaultLocation;
+  handleSearch();
 });

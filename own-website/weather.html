@@ -35,23 +35,44 @@
         </header>
       </main>
       
-      <section id="content" class="welcome">
-        <form id="myform">
-          <div class="formcontanier">
-              <h1>Little Rock Weather</h1>
-              <label class="formlabel" for="location"> Enter Location: </label>
-              <input type="text" id="location" name="Location" size="30" maxlength="30" value="Little Rock Weather" data-rule-required="true" data-msg-required="Location is Required"><br>
-              <button id="displayweather">Display Weather</button>
-              <input type="button" value="Clear" id="Clear" name="Clear" onclick="clearForm();">
-
-        </form>
-
-        <div id="weatherloc"></div>
-        <div id="forecastlocation"></div>
-        <canvas id="weather" width="600" height="400"></canvas>
-        <hr>
+      <div class="container">
+        <h1>Location Temperature</h1>
         
+        
+        <label for="location">Enter Location:</label>
+        <input type="text" id="location" placeholder="Enter city or park name">
+        <button id="display">DisplayTemp</button>
+        <button id="clear">Clear</button>
+        <p id="error-message" class="error"></p>
+       
+
+       
+        <div class="location-details">
+            <h2>Location Information</h2>
+            <p><strong>Name:</strong> <span id="location-name"></span></p>
+            <p><strong>Region:</strong> <span id="admin-location"></span></p>
+            <p><strong>Country:</strong> <span id="country"></span></p>
+            <p><strong>Latitude:</strong> <span id="latitude"></span></p>
+            <p><strong>Longitude:</strong> <span id="longitude"></span></p>
+        </div>
+
+       
+        <h2>7-Day Forecast</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Temperature (°F)</th>
+                </tr>
+            </thead>
+            <tbody id="forecast-table-body"></tbody>
+        </table>
+
+       
+        <h2>Temperature Trend</h2>
+        <canvas id="forecast-chart"></canvas>
     </div>
+
 
 
         

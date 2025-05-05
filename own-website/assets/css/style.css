@@ -136,7 +136,7 @@ aside .container{
  
   
   button {
-    background-color: #1e3d58;
+    background-color:  #e8615d;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -147,7 +147,7 @@ aside .container{
   }
   
   button:hover {
-    background-color: #365f7d;
+    background-color:  #e8615d;
   }
   
 
@@ -171,7 +171,7 @@ aside .container{
   }
   
   th {
-    background-color: #007BFF;
+    background-color: #e8615d;
     color: white;
   }
   .formlabel
